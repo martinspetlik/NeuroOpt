@@ -1,21 +1,25 @@
 from torchvision.datasets import MNIST
 from torch.utils.data import Dataset
-from torch.utils.data import Subset
 
 
 class MNISTDataset(Dataset):
-    def __init__(self, data_dir, data_transform):
+    def __init__(self, data_dir, data_transform, labels=None):
         self.data_transform = data_transform
 
         # Just for illustration, I only load the training dataset and then split it.
         self.dataset = MNIST(root=data_dir, train=True, download=True)
 
-        print("self.dataset ", self.dataset)
+        if labels is not None:
+            # Filter dataset indices where label is in labels
+            self.indices = [i for i, target in enumerate(self.dataset.targets) if target in labels]
+        else:
+            self.indices = list(range(len(self.dataset)))
 
     def __len__(self):
-        return len(self.dataset)
+        return len(self.indices)
 
     def __getitem__(self, idx):
-        image, label = self.dataset[idx]
+        real_idx = self.indices[idx]
+        image, label = self.dataset[real_idx]
         image = self.data_transform(image)
         return image, label

@@ -1,0 +1,17 @@
+random_seed: 12345
+optimizer_name: "AdamW"
+learning_rate: 0.0005 
+learning_rate_scheduler: {'class': "ReduceLROnPlateau", 'patience': 10, 'factor': 0.9}
+num_epochs: 250
+batch_size_train: 8
+batch_size_test: 1
+n_train_samples: 250
+n_test_samples: 50
+val_samples_ratio: 0.2
+optuna_sampler_class: BruteForceSampler
+train: True
+num_timesteps: 300
+labels: [1, 5]
+model_nn_config: {"dim": 32, "channels": 1, "attn_heads": 8, "attn_dim_head": 32, "use_rotary_emb": True, "use_temporal_attention": False}
+noise_scheduler_config: {"schedule_type": "uniform"}
+model_class_name: "MnistUNet"

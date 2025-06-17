@@ -18,7 +18,8 @@ def prepare_dataset(study, config, data_dir, serialize_path=None):
     # Inverse transform
     inverse_transform = InverseScaleToZeroOne()
 
-    dataset = MNISTDataset(data_dir=data_dir, data_transform=transform)
+    selected_labels = config["labels"] if "labels" in config else None  # For illustrative purposes train just on a few classes to speed up everything
+    dataset = MNISTDataset(data_dir=data_dir, data_transform=transform, labels=selected_labels)
 
     ####
     # Split datasets
