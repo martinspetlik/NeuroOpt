@@ -3,7 +3,7 @@
  Repository for applications of neural networks in optics.
 
 ---
-
+Tested with Python3.8 and packages listed in `requirements.txt` file
 ##  MNIST Diffusion Experiments
 
 The `mnist_` directories contain scripts for training a **denoising diffusion model** on the MNIST dataset (handwritten digits). These scripts are **illustrative**, with a focus on the overall **structure and workflow** rather than achieving optimal performance.
