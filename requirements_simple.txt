@@ -1,0 +1,11 @@
+typing-extensions
+optuna==3.6.0
+torchvision==0.19.0
+torch==2.4.0
+joblib
+pandas
+scikit-learn
+einops
+einops_exts
+rotary-embedding-torch
+matplotlib
